@@ -9,11 +9,18 @@ class History {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        userSkor: {
-            type: DataTypes.INTEGER
-        },
         userId: {
             allowNull: false,
+            type: DataTypes.INTEGER
+        },
+        gameId: {
+            allowNull: false,
+            type: DataTypes.INTEGER
+        },
+        totalRonde: {
+            type: DataTypes.INTEGER
+        },
+        userSkor: {
             type: DataTypes.INTEGER
         },
         createdAt: {
@@ -32,17 +39,20 @@ class History {
     }
 
     // insert new player score
-    async insertScore(user_id, user_skor){
+    async insertScore(userId, gameId, totalRonde, userSkor){
         try {
             await this.#model.create({ 
-            userId: user_id, 
-            userSkor: user_skor
+                userId, 
+                gameId,
+                totalRonde,
+                userSkor
         });
         } catch(error) {
             console.log(error)
             return error
         }
     }   
+
 };
 
 const historyUser = new History()

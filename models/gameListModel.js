@@ -90,6 +90,11 @@ class GameList {
             return error
         }
     }
+
+    // get the model
+    async getModel(){
+        return this.#model
+    }
 };
 
 const gameListModel = new GameList();

@@ -68,6 +68,7 @@ router.post('/avatar/save', SaveAvatar.postAvatar);
 /* router untuk komponen profile page */
 router.get('/profile/get/:id', ProfilePageController.getProfilePage );
 router.post('/profile/upsert/:id', ProfilePageController.upsertProfile );
+router.get('/profile/history/:id', ProfilePageController.getUserHistory );
 
 /* router untuk komponen game page */
 router.get('/gamelist/get', GameController.getGameList)

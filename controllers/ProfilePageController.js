@@ -1,6 +1,6 @@
 // import models
 const { userModel } = require('../models/UserModel');
-const { biodataUser } = require('../models/biodataUser')
+const { biodataUser } = require('../models/biodataUser');
 const { ProfilePageModel } = require('../models/profilePage');
 
 
@@ -79,6 +79,24 @@ class ProfilePageController {
         } catch (error) {
             console.log(error);
             res.status(500).json({ status: 'failed', message: 'Update Profile Failed' })
+        }
+    }
+
+
+    // get user history game 
+    static async getUserHistory(req,res) {
+        try{
+            const userId = Number(req.params.id)
+
+            // get game history data per user
+            const userHistory = await ProfilePageModel.getUserGameHistory(userId);
+            console.log(userHistory);
+
+            // send data
+            return res.json({ status: 'success', data: userHistory });
+        } catch(error) {
+            console.log(error);
+            res.status(500).send({ status: 'failed', data: [] });
         }
     }
 

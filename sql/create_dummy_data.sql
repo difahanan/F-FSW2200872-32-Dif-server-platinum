@@ -26,21 +26,7 @@ VALUES
 ;
 
 
-INSERT INTO public.history (user_skor, user_id)
-VALUES
-	(80, 2), (80, 2), (80, 2),
-	(40, 3), (40, 4), (40, 5),
-    (15, 4), (15, 1), (15, 3),
-    (20, 6), (20, 3), (20, 6),
-    (30, 7), (30, 5), (30, 3),
-    (90, 8), (15, 1), (15, 1),
-    (15, 1), (20, 9), (20, 9),
-    (20, 4), (30, 5), (30, 7)
- 
-;
-
-
-INSERT INTO public.gamelist (game_id, game_name, game_description, game_type, game_url, game_image_url)
+INSERT INTO public.gamelist (gameid, game_name, game_description, game_type, game_url, game_image_url)
 VALUES
     (1, 'RockPaperScissors', 'Traditional Games to play with your best friends', 'trending', 'rps', 'https://drive.google.com/uc?export=view&id=1JKSkvsWkXTELJCjhsfbR1lciNBd5oAxK'),
     (2, 'Caroom Pool', 'Carrom Pool is an easy-to-play multiplayer board game. Are you up for the challenge?', 'trending', 'caroompool', 'https://drive.google.com/uc?export=view&id=1tMFG2eoQU1hFssOmwmSTLSF9DnVSHfL-'),
@@ -53,4 +39,33 @@ VALUES
     (9, 'Ultimate Golf', 'Don''t waste any time waiting for your opponent to take their shot, tee-off in this fantastic real-time multiplayer golf game!', 'popular', 'ultimategolf', 'https://drive.google.com/uc?export=view&id=10KBDwd32YbgMuPzxaS8kZJJBTGwd8LOd'),
     (10, '8 Ball Pool', 'The World''s #1 multiplayer pool game!', 'comingsoon', '8ballpool', 'https://drive.google.com/uc?export=view&id=1n9qo6aC1mUTaVHEzjD4qNsaVM1Z8eWx5'),
     (11, 'Golf Battle', 'Beat your opponents in this innovative 6-player real time golf game.', 'comingsoon', 'golfbattle', 'https://drive.google.com/uc?export=view&id=1z7zFgGLlFNRFEgF4Rp9sTBDPxrNbCbky')
+;
+
+
+INSERT INTO public.history (user_id, game_id, total_ronde, user_skor)
+VALUES
+    (2, 1, 90, 80),
+    (2, 1, 130, 70),
+    (2, 1, 150, 90),
+    (3, 1, 45, 40),
+    (4, 1, 45, 40),
+    (5, 1, 45, 40),
+    (4, 1, 20, 15),
+    (1, 1, 20, 15),
+    (3, 1, 20, 15),
+    (6, 1, 23, 20),
+    (3, 1, 23, 20),
+    (6, 1, 23, 20),
+    (7, 1, 35, 30),
+    (5, 1, 35, 30),
+    (3, 1, 35, 30),
+    (8, 1, 120, 90),
+    (1, 1, 30, 15),
+    (1, 1, 30, 15),
+    (1, 1, 30, 15),
+    (9, 1, 24, 20),
+    (9, 1, 24, 20),
+    (4, 1, 24, 20),
+    (5, 1, 39, 30),
+    (7, 1, 39, 30)
 ;

@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Op, fn, col } = require('sequelize');
 const { sequelize } = require('../config');
 
 class History {
@@ -52,6 +52,48 @@ class History {
             return error
         }
     }   
+
+    // check user played games
+    async getPlayedGames(userId){
+        try {
+            const data = await this.#model.findAll({ 
+                where: {
+                    userId,
+                    totalRonde: {
+                        [Op.gt]: 0,
+                    },
+                
+                },
+                attributes: [
+                    [fn('DISTINCT', col('game_id')), 'gameId']
+                ],
+                raw: true
+            });
+            return data
+        } catch(error) {
+            console.log(error)
+            return error
+        }
+    }   
+
+    // get user total score 
+    async getUserScore(userId){
+        try{
+            const data = await this.#model.findOne({ 
+                where: {
+                    userId
+                },
+                attributes: [
+                    [sequelize.fn('SUM', sequelize.col('user_skor')), 'totalSkor']
+                ],
+                raw: true
+            });
+            return data
+        } catch(error) {
+            console.log(error)
+            return error
+        }
+    }
 
 };
 

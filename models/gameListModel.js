@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config');
+const { sequelizeReader } = require('../config/dbReader');
 
 class GameList {
-    #model = sequelize.define('gamelist', {
+    #model = sequelizeReader.define('gamelist', {
         gameid: {
             allowNull: false,
             autoIncrement: true,

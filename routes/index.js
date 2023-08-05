@@ -9,7 +9,7 @@ const { PassportMainController } = require('../controllers/PassportMainControlle
 const { ProfilePageController } = require('../controllers/ProfilePageController')
 const { SaveAvatar } = require('../controllers/SaveAvatarController')
 const { GameController } = require('../controllers/GameController')
-
+const { UserGamesController } = require('../controllers/UserGamesController')
 
 // import functions related with avatar
 const { userModel } = require('../models/UserModel')
@@ -31,7 +31,7 @@ router.post('/login', function(req, res, next) {
         }
 
         if (! user) {
-        return res.send(401,{ success : false, message : info.message })
+            return res.send(401, { success : false, message : info.message })
         }
 
         req.login(user, async function(err){
@@ -63,15 +63,19 @@ router.get('/gamelist/popular', LandingPageController.popularGames);
 router.get('/gamelist/comingsoon', LandingPageController.comingSoonGames);
 router.get('/player/leaderboard', LandingPageController.playerLeaderboard);
 router.get('/player/community', LandingPageController.playerCommunity);
-router.post('/avatar/save', SaveAvatar.postAvatar);
 
 /* router untuk komponen profile page */
 router.get('/profile/get/:id', ProfilePageController.getProfilePage );
 router.post('/profile/upsert/:id', ProfilePageController.upsertProfile );
 router.get('/profile/history/:id', ProfilePageController.getUserHistory );
+router.post('/avatar/save', SaveAvatar.postAvatar);
 
 /* router untuk komponen game page */
 router.get('/gamelist/get', GameController.getGameList)
 router.post('/rps/insert-score', GameController.insertRPSscore)
+
+/* router untuk komponen game terkait dengan user */
+router.get('/usergame/played/:id', UserGamesController.getUserPlayedGames)
+router.get('/usergame/totalskor/:id', UserGamesController.totalSkorUser);
 
 module.exports = router;

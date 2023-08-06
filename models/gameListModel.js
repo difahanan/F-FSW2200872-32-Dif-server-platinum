@@ -95,6 +95,20 @@ class GameList {
     async getModel(){
         return this.#model
     }
+
+    // get game id from game url 
+    async getGameId(game_url) {
+        try {
+            const data = await this.#model.findOne({ 
+                where: {game_url},
+                attributes: ['gameid'],
+                raw: true });
+            return data;
+        } catch(error) {
+            console.log(error)
+            return error
+        }
+    }
 };
 
 const gameListModel = new GameList();

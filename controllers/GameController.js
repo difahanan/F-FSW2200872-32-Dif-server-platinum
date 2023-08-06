@@ -31,6 +31,29 @@ class GameController {
             return res.status(500).send(' Internal Server Error !');
         }
     }
+
+    // controller to insert game score
+    static async insertGameScore(req, res) {
+        try {
+            const data = req.body;
+            const user_id = Number(data.user_id);
+            const game_url = data.game_url;
+            const total_ronde = Number(data.total_ronde);
+            const user_skor = Number(data.skor);
+
+            // get game_id from game_url info
+            const gameId = await gameListModel.getGameId(game_url.substring(1));
+
+            // insert data game to history table
+            setTimeout(async () => {
+                await historyUser.insertScore(user_id, gameId.gameid, total_ronde, user_skor);
+                return res.json({ status: 'success', message: "Score updated!" }); 
+            }, 2000);
+        } catch (error) {
+            console.log(error);
+            return res.status(500).send(' Internal Server Error !');
+        }
+    }
 }
 
 module.exports = { GameController }

@@ -90,7 +90,6 @@ class ProfilePageController {
 
             // get game history data per user
             const userHistory = await ProfilePageModel.getUserGameHistory(userId);
-            console.log(userHistory);
 
             // send data
             return res.json({ status: 'success', data: userHistory });

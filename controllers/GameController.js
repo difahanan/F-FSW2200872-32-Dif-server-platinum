@@ -42,7 +42,7 @@ class GameController {
             const user_skor = Number(data.skor);
 
             // get game_id from game_url info
-            const gameId = await gameListModel.getGameId(game_url.substring(1));
+            const gameId = await gameListModel.getGameId(game_url);
 
             // insert data game to history table
             setTimeout(async () => {

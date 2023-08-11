@@ -67,8 +67,9 @@ class ProfilePageModel {
             const data = await historyTable.findAll({
                 where: {userId},
                 attributes: [
+                    'id',
                     [col('"gamelist"."game_name"'), 'gameName'],
-                    [Sequelize.literal('to_char(created_at, \'YYYY-MM-DD HH:MI:SS\')'), 'playtime'],
+                    [Sequelize.literal('to_char(created_at + interval \'7 hour\', \'YYYY-MM-DD HH:MI:SS\')'), 'playtime'],
                     'totalRonde', 
                     'userSkor'
                 ],

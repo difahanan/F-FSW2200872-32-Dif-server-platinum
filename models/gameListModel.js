@@ -51,7 +51,7 @@ class GameList {
         try {
             const data = await this.#model.findAll({ 
                 where: {game_type: "trending"},
-                order: [["gameid", "ASC"]],
+                order: [["gameid", "DESC"]],
                 limit: 3,
                 raw: true });
             return data;
@@ -66,7 +66,7 @@ class GameList {
         try {
             const data = await this.#model.findAll({ 
                 where: {game_type: "popular"},
-                order: [["gameid", "ASC"]],
+                order: [["gameid", "DESC"]],
                 limit: 5,
                 raw: true });
             return data;
@@ -81,7 +81,7 @@ class GameList {
         try {
             const data = await this.#model.findAll({ 
                 where: {game_type: "comingsoon"},
-                order: [["gameid", "ASC"]],
+                order: [["gameid", "DESC"]],
                 limit: 3,
                 raw: true });
             return data;

@@ -84,7 +84,7 @@ class History {
                     userId
                 },
                 attributes: [
-                    [sequelize.fn('SUM', sequelize.col('user_skor')), 'totalSkor']
+                    [fn('SUM', col('user_skor')), 'totalSkor']
                 ],
                 raw: true
             });

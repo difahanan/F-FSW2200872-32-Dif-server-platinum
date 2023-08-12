@@ -72,12 +72,12 @@ class PassportMainController {
             // CEK APAKAH ADA DUPLIKASI EMAIL DI DB
             const userDataByEmail = await userModel.getDataByEmail(email);
                 if (userDataByEmail !== null) {
-                return res.status(200).json({ status: "failed", message: "EMAIL ALREADY REGISTERED" });
+                return res.status(200).json({ status: "failed", message: "EMAIL ALREADY REGISTERED, PLEASE USE DIFFERENT EMAIL !" });
             }
             // CEK APAKAH ADA DUPLIKASI USERNAME DI DB
             const userDataByUsername = await userModel.getData(username);
                 if (userDataByUsername !== null) {
-                return res.status(200).json({ status: "failed", message: "USERNAME ALREADY REGISTERED" });
+                return res.status(200).json({ status: "failed", message: "USERNAME ALREADY REGISTERED, PLEASE USE DIFFERENT USERNAME !" });
             }
             // HASH PASSWORD
             const hashedPassword = CryptoJs.HmacSHA256(password, process.env.SECRET_LOGIN).toString()

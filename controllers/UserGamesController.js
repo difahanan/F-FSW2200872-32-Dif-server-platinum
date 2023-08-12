@@ -30,13 +30,13 @@ class UserGamesController {
         try {
             // get user skor
             const userSkor = await historyUser.getUserScore(userId);      
-            console.log(userSkor.totalSkor)
+
             // send data
             return res.json({ status: 'success', data: Number(userSkor.totalSkor) > 0 ? Number(userSkor.totalSkor) : 0 });
             
         } catch (error) {
             console.log(error);
-            res.status(500).json({ status: 'failed', data: [] });
+            res.status(500).send(' Internal Server Error !');
         }
     }
 }

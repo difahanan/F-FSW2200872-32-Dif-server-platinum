@@ -1,6 +1,7 @@
 // import models
 const { gameListModel } = require('../models/gameListModel');
 const { historyUser } = require('../models/history');
+const { gameLeaderboard } = require('../models/gameLeaderboard')
 
 class GameController {
     //controller untuk melihat gameList
@@ -10,6 +11,22 @@ class GameController {
             const gameList = await gameListModel.getGameList();
             // kirim semua data ke user
             return res.json({ status: 'success', data: gameList });
+        } catch (error) {
+            console.log(error);
+            res.status(500).send(' Internal Server Error !');
+        }
+    }
+
+    //controller untuk melihat leaderboard pada setiap game
+    static async getGameLeaderboard(req, res) {
+        try {
+            const gameid = Number(req.params.gameId)
+
+            // ambil data leaderboard per game
+            const data = await gameLeaderboard.getGameLeaderboard(gameid);
+
+            // kirim semua data ke user
+            return res.json({ status: 'success', data: data });
         } catch (error) {
             console.log(error);
             res.status(500).send(' Internal Server Error !');

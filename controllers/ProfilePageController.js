@@ -16,7 +16,7 @@ class ProfilePageController {
             return res.json({ status: 'success', data: userProfile });
         } catch(error) {
             console.log(error);
-            res.status(500).send({ status: 'failed', data: [] });
+            res.status(500).send(' Internal Server Error !');
         }
     }
 
@@ -34,13 +34,13 @@ class ProfilePageController {
             // Cek apakah username sudah ada di DB
             const existingUsername = await userModel.getData(newUsername)
             if (existingUsername) {
-                return res.status(200).json({ status: "failed", message: "USERNAME ALREADY REGISTERED" });                
+                return res.status(200).json({ status: "failed", message: "USERNAME ALREADY REGISTERED, PLEASE USE DIFFERENT USERNAME !" });                
             }
 
             // Cek apakah email sudah ada di DB
             const existingEmail = await userModel.getDataByEmail(newEmail)
             if (existingEmail) {
-                return res.status(200).json({ status: "failed", message: "EMAIL ALREADY REGISTERED" });                
+                return res.status(200).json({ status: "failed", message: "EMAIL ALREADY REGISTERED, PLEASE USE DIFFERENT EMAIL !" });                
             }
 
             // Mengecek Ketersediaan Data Biodata

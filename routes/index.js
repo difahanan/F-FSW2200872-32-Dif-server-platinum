@@ -72,6 +72,7 @@ router.post('/avatar/save', SaveAvatar.postAvatar);
 
 /* router untuk komponen game page */
 router.get('/gamelist/get', GameController.getGameList)
+router.get('/gamelist/leaderboard/:gameId', GameController.getGameLeaderboard)
 router.post('/rps/insert-score', GameController.insertRPSscore)
 router.post('/game/insert-score', GameController.insertGameScore)
 

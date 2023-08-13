@@ -25,12 +25,13 @@ class gameLeaderboard {
                 FROM (
                     SELECT 
                         game_id,
+                        "user".id as user_id,
                         "user".username,
                         SUM(user_skor) as score
                     FROM history
                     LEFT JOIN "user" ON "user".id = history.user_id
                     WHERE game_id = ${gameId}
-                    GROUP BY game_id, "user".username
+                    GROUP BY game_id, "user".id, "user".username
                     HAVING SUM(user_skor) > 0
                     ) score_list 
             ) score_list_2 

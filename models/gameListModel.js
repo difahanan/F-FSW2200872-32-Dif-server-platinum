@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Op } = require('sequelize');
 const { sequelizeReader } = require('../config/dbReader');
 
 class GameList {
@@ -38,7 +38,9 @@ class GameList {
     // get all game list
     async getGameList() {
         try {
-            const data = await this.#model.findAll({ raw: true });
+            const data = await this.#model.findAll({
+                where: {game_type: { [Op.in]: ["trending", "popular"]}},
+                raw: true });
             return data;
         } catch(error) {
             console.log(error)

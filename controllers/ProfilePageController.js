@@ -11,7 +11,7 @@ class ProfilePageController {
         try{
             // get all data related with user
             const userProfile = await ProfilePageModel.getUserData(Number(req.params.id));
-            console.log(userProfile);
+
             // send data
             return res.json({ status: 'success', data: userProfile });
         } catch(error) {
@@ -95,8 +95,8 @@ class ProfilePageController {
             return res.json({ status: 'success', data: userHistory });
         } catch(error) {
             console.log(error);
-            res.status(500).send({ status: 'failed', data: [] });
-        }
+            return res.status(500).send(' Internal Server Error !');
+         }
     }
 
 }

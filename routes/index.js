@@ -71,14 +71,14 @@ router.get('/profile/history/:id', ProfilePageController.getUserHistory );
 router.post('/avatar/save', SaveAvatar.postAvatar);
 
 /* router untuk komponen game page */
-router.get('/gamelist/get', GameController.getGameList)
-router.get('/gamelist/leaderboard/:gameId', GameController.getGameLeaderboard)
-router.post('/rps/insert-score', GameController.insertRPSscore)
-router.post('/game/insert-score', GameController.insertGameScore)
+router.get('/gamelist/get', GameController.getGameList);
+router.get('/gamelist/leaderboard/:gameId', GameController.getGameLeaderboard);
+router.post('/rps/insert-score', GameController.insertRPSscore);
+router.post('/game/insert-score', GameController.insertGameScore);
 
 
 /* router untuk komponen game terkait dengan user */
-router.get('/usergame/played/:id', UserGamesController.getUserPlayedGames)
+router.get('/usergame/played/:id', UserGamesController.getUserPlayedGames);
 router.get('/usergame/totalskor/:id', UserGamesController.totalSkorUser);
 
 module.exports = router;

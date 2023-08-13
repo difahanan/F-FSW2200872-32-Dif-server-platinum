@@ -62,7 +62,6 @@ class LandingPageModel {
             return error
         } 
     }
-
 }
 
 module.exports = { LandingPageModel }
